@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar Roadmap — Англійська для дітей 10+</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+ --ink:#1b1f3b;--ink-soft:#4b5173;--muted:#6f7596;--line:#e4e7f6;--bg:#f5f6ff;
+ --primary:#5468e7;--primary-dark:#3b4ec7;--accent:#ff7a59;--good:#2fc47a;
+ --beginner:#2fc47a;--beginner-bg:#e2f8ec;--beginner-ink:#14703f;
+ --elementary:#f6b73c;--elementary-bg:#fff2d6;--elementary-ink:#8a5d00;
+ --preint:#f5784a;--preint-bg:#ffe8dc;--preint-ink:#a8400f;
+ --inter:#d9476a;--inter-bg:#fde2ea;--inter-ink:#992644;
+ --radius:22px;--shadow:0 12px 30px rgba(84,104,231,.14);
+ --display:'Fredoka','Manrope',system-ui,sans-serif;
+}
+.lv-beginner{--lv:var(--beginner);--lv-bg:var(--beginner-bg);--lv-ink:var(--beginner-ink)}
+.lv-elementary{--lv:var(--elementary);--lv-bg:var(--elementary-bg);--lv-ink:var(--elementary-ink)}
+.lv-preint{--lv:var(--preint);--lv-bg:var(--preint-bg);--lv-ink:var(--preint-ink)}
+.lv-inter{--lv:var(--inter);--lv-bg:var(--inter-bg);--lv-ink:var(--inter-ink)}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;padding:36px 18px 80px;
+ background:radial-gradient(900px 420px at 90% -80px,#dfe4ff 0,transparent 70%),radial-gradient(700px 380px at 0 0,#ffe6dc 0,transparent 70%),var(--bg);background-repeat:no-repeat}
+.container{max-width:1200px;margin:0 auto}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--primary);outline-offset:3px;border-radius:12px}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;border-radius:10px;z-index:99}
+.skip:focus{left:12px}
+
+/* HERO */
+.hero{text-align:center;margin-bottom:28px}
+.kicker{display:inline-block;padding:7px 18px;background:#fff;border:2px solid var(--line);border-radius:100px;font-size:.8rem;font-weight:800;color:var(--primary);letter-spacing:.05em;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,5vw,3.5rem);line-height:1.1;letter-spacing:-.01em;margin-bottom:14px}
+.hero h1 em{font-style:normal;color:var(--primary);background:linear-gradient(transparent 62%,#ffd9cc 62%);padding:0 6px;border-radius:6px}
+.hero p{font-size:1.08rem;color:var(--ink-soft);max-width:660px;margin:0 auto}
+
+/* PROGRESS PANEL */
+.progress-panel{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:26px;padding:22px 26px;margin-bottom:22px;box-shadow:var(--shadow)}
+.pp-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin-bottom:10px}
+.pp-count{font-family:var(--display);font-size:1.4rem;font-weight:600}
+.pp-count b{color:var(--primary)}
+.pp-level{font-weight:800;font-size:.9rem;color:var(--ink-soft);background:var(--bg);padding:4px 12px;border-radius:100px}
+.bar{height:16px;background:#e9ecfb;border-radius:100px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--beginner),var(--elementary),var(--preint),var(--inter));transition:width .6s cubic-bezier(.3,1.2,.4,1)}
+.pp-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px}
+.go{min-height:48px;padding:0 24px;border:0;border-radius:16px;background:var(--primary);color:#fff;font:800 1rem 'Manrope',sans-serif;cursor:pointer;box-shadow:0 5px 0 var(--primary-dark);transition:transform .15s,box-shadow .15s}
+.go:hover{transform:translateY(-2px)}
+.go:active{transform:translateY(4px);box-shadow:0 1px 0 var(--primary-dark)}
+.link-btn{background:none;border:0;color:var(--muted);font:700 .85rem 'Manrope',sans-serif;text-decoration:underline;cursor:pointer;min-height:44px;padding:0 6px}
+.badges{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.b-item{position:relative;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:18px;background:#f0f1fa;color:var(--muted);border:2px dashed #cdd1ea;font-weight:800;font-size:.9rem}
+.b-ico{font-size:1.5rem;filter:grayscale(1);opacity:.55}
+.b-lock{margin-left:auto;font-size:.8rem}
+.b-item.earned{background:var(--lv-bg);color:var(--lv-ink);border:2px solid var(--lv);animation:pop .6s}
+.b-item.earned .b-ico{filter:none;opacity:1}
+.b-item.earned .b-lock{display:none}
+
+/* INFO CARDS */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-bottom:26px}
+.info-card{background:#fff;border:2px solid var(--line);border-radius:20px;padding:18px 20px;transition:transform .2s,box-shadow .2s}
+.info-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.info-card .icon{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--bg);font-size:1.5rem;margin-bottom:10px}
+.info-card h3{font-family:var(--display);font-size:1.08rem;font-weight:600;margin-bottom:4px}
+.info-card p{font-size:.9rem;color:var(--muted);line-height:1.55}
+
+/* TOOLBAR */
+.toolbar{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;padding:12px 14px;margin:0 -4px 22px;background:rgba(245,246,255,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:20px;border:2px solid var(--line)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;background:#fff;border:2px solid var(--line);border-radius:100px;font:800 .85rem 'Manrope',sans-serif;color:var(--ink-soft);cursor:pointer;transition:transform .15s,background .15s}
+.chip:hover{transform:translateY(-2px)}
+.chip b{font-weight:800;color:var(--muted);background:var(--bg);border-radius:100px;padding:0 8px;font-size:.78rem}
+.chip .dot{width:11px;height:11px;border-radius:50%;background:var(--lv)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip[aria-pressed="true"] b{background:rgba(255,255,255,.2);color:#fff}
+.seg{display:inline-flex;background:#fff;border:2px solid var(--line);border-radius:100px;padding:3px}
+.seg button{min-height:40px;padding:0 16px;border:0;border-radius:100px;background:transparent;font:800 .85rem 'Manrope',sans-serif;color:var(--ink-soft);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--primary);color:#fff}
+
+/* VIEW SWITCH + FILTER */
+body[data-view="cards"] .view-table{display:none}
+body[data-view="table"] .view-cards{display:none}
+body[data-filter="beginner"] [data-level]:not([data-level="beginner"]){display:none!important}
+body[data-filter="elementary"] [data-level]:not([data-level="elementary"]){display:none!important}
+body[data-filter="preint"] [data-level]:not([data-level="preint"]){display:none!important}
+body[data-filter="inter"] [data-level]:not([data-level="inter"]){display:none!important}
+
+/* ZONES + CARDS */
+.zone{position:relative;margin-bottom:30px}
+.zone:not(:last-of-type)::after{content:"";position:absolute;left:34px;bottom:-26px;height:22px;border-left:4px dotted #c6cbe8}
+.zone summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--lv-bg);border:2px solid var(--lv);border-radius:22px}
+.zone summary::-webkit-details-marker{display:none}
+.zone summary::after{content:"▾";margin-left:6px;color:var(--lv-ink);font-size:1.1rem;transition:transform .25s}
+.zone:not([open]) summary::after{transform:rotate(-90deg)}
+.zone-ico{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#fff;font-size:1.6rem;box-shadow:0 3px 0 var(--lv)}
+.zone-title{display:flex;flex-direction:column;line-height:1.25}
+.zone-title strong{font-family:var(--display);font-size:1.3rem;font-weight:600;color:var(--lv-ink)}
+.zone-title small{font-size:.82rem;font-weight:700;color:var(--ink-soft)}
+.zone-prog{margin-left:auto;display:flex;align-items:center;gap:10px}
+.zone-count{font-weight:800;font-size:.9rem;color:var(--lv-ink)}
+.mini{width:90px;height:10px;border-radius:100px;background:rgba(255,255,255,.8);overflow:hidden}
+.mini i{display:block;height:100%;width:0;background:var(--lv);border-radius:100px;transition:width .5s}
+.zone.is-complete summary{background:var(--lv);border-color:var(--lv)}
+.zone.is-complete .zone-title strong,.zone.is-complete .zone-title small,.zone.is-complete .zone-count,.zone.is-complete summary::after{color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;padding:18px 2px 0}
+.card{display:flex;flex-direction:column;gap:8px;background:#fff;border:2px solid var(--line);border-bottom:6px solid var(--lv);border-radius:var(--radius);padding:16px 18px 16px;transition:transform .2s,box-shadow .2s,background .2s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.card-top{display:flex;justify-content:space-between;align-items:center}
+.num{display:grid;place-items:center;min-width:48px;height:44px;padding:0 8px;border-radius:15px;background:var(--lv-bg);color:var(--lv-ink);font:700 1.3rem var(--display)}
+.topic{font-family:var(--display);font-size:1.2rem;font-weight:600;line-height:1.25}
+.struct{font-size:.88rem;font-weight:700;color:var(--ink-soft);background:var(--bg);border-radius:12px;padding:8px 12px}
+.vocab{font-size:.86rem;color:var(--muted)}
+.wc{align-self:flex-start;padding:2px 10px;border-radius:100px;background:var(--lv-bg);color:var(--lv-ink);font-size:.74rem;font-weight:800}
+.actions{display:flex;gap:8px;margin-top:auto;padding-top:8px}
+.done-btn{flex:none;width:44px;height:44px;border-radius:50%;border:3px dashed #c4c9e6;background:#fff;color:transparent;font-size:1.2rem;font-weight:800;cursor:pointer;transition:transform .15s,background .15s}
+.done-btn:hover{border-color:var(--good);transform:scale(1.08)}
+.done-btn[aria-pressed="true"]{background:var(--good);border:3px solid var(--good);color:#fff;animation:pop .4s}
+.card.is-done{background:#f3fcf7;border-color:#c8efd9;border-bottom-color:var(--good)}
+.btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 12px;border-radius:14px;font-weight:800;font-size:.9rem;text-decoration:none;white-space:nowrap;transition:transform .15s,box-shadow .15s}
+.btn.lesson{background:var(--primary);color:#fff;box-shadow:0 4px 0 var(--primary-dark)}
+.btn.tasks{background:#fff0e8;color:#a8400f;border:2px solid #ffc7ae;box-shadow:0 4px 0 #ffb496}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(3px);box-shadow:none}
+.checkpoint{grid-column:1/-1;display:flex;align-items:center;gap:12px;min-height:56px;padding:12px 20px;border:3px dashed var(--lv);border-radius:20px;background:var(--lv-bg);color:var(--lv-ink);font-weight:800;text-decoration:none;transition:transform .15s}
+.checkpoint:hover{transform:translateY(-2px)}
+.cp-title{font-family:var(--display);font-size:1.05rem;font-weight:600}
+.cp-go{margin-left:auto;font-size:.85rem}
+
+/* TABLE VIEW */
+.table-wrap{background:#fff;border:2px solid var(--line);border-radius:24px;overflow-x:auto;box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;min-width:680px}
+thead{background:var(--bg)}
+th{padding:14px 16px;text-align:left;font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--line)}
+td{padding:14px 16px;vertical-align:middle;border-bottom:1px solid var(--line);font-size:.92rem}
+tbody tr:hover{background:#fafbff}
+tr.is-done{background:#f3fcf7}
+.t-track{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.t-links{display:flex;gap:6px;flex-wrap:wrap}
+.btn.sm{flex:none;min-height:36px;padding:0 10px;font-size:.8rem;box-shadow:0 3px 0 var(--primary-dark)}
+.btn.tasks.sm{box-shadow:0 3px 0 #ffb496}
+.lvl-badge{display:inline-block;padding:5px 12px;border-radius:100px;font-size:.75rem;font-weight:800;white-space:nowrap;background:var(--lv-bg);color:var(--lv-ink)}
+.grammar-topic{font-family:var(--display);font-weight:600;font-size:1.02rem}
+.key-structures{color:var(--ink-soft);font-size:.88rem}
+.vocabulary{color:var(--muted);font-size:.88rem}
+.vocabulary .wc{display:block;margin-top:6px}
+.review-row td{text-align:center;font-weight:800;color:var(--muted);background:#fafbff;padding:14px}
+.review-row a{color:var(--primary)}
+
+/* PARENTS */
+.parents{margin-top:34px;background:#fff;border:2px solid var(--line);border-radius:24px;padding:6px 22px}
+.parents>summary{cursor:pointer;list-style:none;min-height:56px;display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.15rem;font-weight:600}
+.parents>summary::-webkit-details-marker{display:none}
+.parents>summary::after{content:"▾";margin-left:auto;color:var(--muted)}
+.parents[open]>summary::after{transform:rotate(180deg)}
+.callout{margin:6px 0 16px;padding:20px 24px;background:linear-gradient(135deg,#fff7f3,#fef0e8);border:2px solid #ffe2d4;border-radius:20px}
+.callout.blue{background:linear-gradient(135deg,#f0f4ff,#e6ecff);border-color:#d6e0ff}
+.callout h3{font-family:var(--display);font-size:1.15rem;font-weight:600;margin-bottom:8px}
+.callout p{color:var(--ink-soft);font-size:.95rem;margin-bottom:6px}
+.callout ul{margin:8px 0 0 20px;color:var(--ink-soft);font-size:.95rem}
+.callout li{margin:5px 0}
+.footer-note{text-align:center;margin-top:40px;font-size:.88rem;color:var(--muted)}
+.footer-note strong{color:var(--primary)}
+
+/* TOAST */
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,30px);opacity:0;pointer-events:none;background:var(--ink);color:#fff;font-weight:800;padding:14px 22px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.25);max-width:calc(100vw - 32px);text-align:center;transition:opacity .3s,transform .3s;z-index:50}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+.spot{animation:spot 1.8s ease-out}
+@keyframes pop{0%{transform:scale(.7)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+@keyframes spot{0%,100%{box-shadow:0 0 0 0 rgba(84,104,231,0)}25%{box-shadow:0 0 0 8px rgba(84,104,231,.35)}60%{box-shadow:0 0 0 8px rgba(84,104,231,.2)}}
+
+/* RESPONSIVE */
+@media(max-width:820px){.progress-panel{grid-template-columns:1fr}.toolbar{position:static}}
+@media(max-width:560px){body{padding:20px 12px 60px}.badges{grid-template-columns:1fr 1fr}.mini{display:none}.zone-title small{display:none}.grid{grid-template-columns:1fr}.th-struct,th:nth-child(4),td:nth-child(4){display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{body{background:#fff;padding:0}.toolbar,.progress-panel,.done-btn,.skip,#toast{display:none!important}.card,.table-wrap{box-shadow:none;break-inside:avoid}.card:hover{transform:none}.zone::after{display:none}}
+</style>
+</head>
+<body data-view="cards" data-filter="all">
+<a class="skip" href="#roadmap">Skip to the roadmap</a>
+<div class="container">
+
+<header class="hero">
+ <span class="kicker">Self-paced · A2 → Pre-B1</span>
+ <h1>Grammar Roadmap for <em>curious kids 10+</em></h1>
+ <p>30 tracks. No rush, no stress. Each track builds on the last — and every track now has its own lesson page and a companion task pack for reading, listening, speaking and writing.</p>
+</header>
+
+<section class="progress-panel" aria-label="Your progress">
+ <div>
+  <div class="pp-top"><span class="pp-count" aria-live="polite"><b id="doneCount">0</b> / 30 tracks done</span><span class="pp-level" id="curLevel"></span></div>
+  <div class="bar" role="progressbar" aria-label="Tracks completed" aria-valuemin="0" aria-valuemax="30" aria-valuenow="0" id="barWrap"><i id="bar"></i></div>
+  <div class="pp-actions"><button class="go" type="button" id="continueBtn">▶ Start</button><button class="link-btn" type="button" id="resetBtn">Reset progress</button></div>
+ </div>
+ <ul class="badges" aria-label="Level badges"><li class="b-item lv-beginner" data-badge="beginner" title="Starter badge — finish all Beginner tracks"><span class="b-ico" aria-hidden="true">🌱</span><span class="b-txt">Starter</span><span class="b-lock" aria-hidden="true">🔒</span></li><li class="b-item lv-elementary" data-badge="elementary" title="Explorer badge — finish all Elementary tracks"><span class="b-ico" aria-hidden="true">⭐</span><span class="b-txt">Explorer</span><span class="b-lock" aria-hidden="true">🔒</span></li><li class="b-item lv-preint" data-badge="preint" title="Navigator badge — finish all Pre-Intermediate tracks"><span class="b-ico" aria-hidden="true">🚀</span><span class="b-txt">Navigator</span><span class="b-lock" aria-hidden="true">🔒</span></li><li class="b-item lv-inter" data-badge="inter" title="Storyteller badge — finish all Intermediate tracks"><span class="b-ico" aria-hidden="true">🏆</span><span class="b-txt">Storyteller</span><span class="b-lock" aria-hidden="true">🔒</span></li></ul>
+</section>
+
+<div class="info-grid">
+ <div class="info-card"><span class="icon">🧭</span><h3>Follow the order</h3><p>Each track recycles the previous ones. Skipping ahead breaks the spiral.</p></div>
+ <div class="info-card"><span class="icon">⏱️</span><h3>1–2 weeks per track</h3><p>6–12 sessions of 15–20 minutes. Stretch to 3 weeks if the child needs more practice.</p></div>
+ <div class="info-card"><span class="icon">✅</span><h3>Check before moving on</h3><p>Only move to the next track when the child uses the current structures confidently — in real speech, not just exercises.</p></div>
+ <div class="info-card"><span class="icon">📖</span><h3>Every track has 2 pages</h3><p><strong>Lesson</strong> (grammar) + <strong>Tasks</strong> (reading, listening, speaking, writing). Both are linked on every track.</p></div>
+</div>
+
+<div class="toolbar" role="toolbar" aria-label="Filter and view options">
+ <div class="chips" role="group" aria-label="Filter by level"><button class="chip" type="button" data-lv="all" aria-pressed="true">All <b>30</b></button><button class="chip lv-beginner" type="button" data-lv="beginner" aria-pressed="false"><i class="dot"></i>Beginner <b>6</b></button><button class="chip lv-elementary" type="button" data-lv="elementary" aria-pressed="false"><i class="dot"></i>Elementary <b>9</b></button><button class="chip lv-preint" type="button" data-lv="preint" aria-pressed="false"><i class="dot"></i>Pre-Intermediate <b>9</b></button><button class="chip lv-inter" type="button" data-lv="inter" aria-pressed="false"><i class="dot"></i>Intermediate <b>6</b></button></div>
+ <div class="seg" role="group" aria-label="View"><button type="button" data-viewbtn="cards" aria-pressed="true">▦ Cards</button><button type="button" data-viewbtn="table" aria-pressed="false">☰ Table</button></div>
+</div>
+
+<main id="roadmap">
+ <div class="view-cards">
+<details class="zone lv-beginner" data-level="beginner" open>
+<summary><span class="zone-ico" aria-hidden="true">🌱</span><span class="zone-title"><strong>Beginner</strong><small>Tracks 1–6 · earn the Starter badge</small></span><span class="zone-prog"><span class="zone-count" data-zone-count="beginner">0/6</span><span class="mini"><i data-zone-bar="beginner"></i></span></span></summary>
+<div class="grid"><article class="card lv-beginner" id="card-1" data-track="1" data-level="beginner">
+<div class="card-top"><span class="num">01</span><button class="done-btn" type="button" data-track="1" aria-pressed="false" aria-label="Mark track 1 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">To be — I, You</h3>
+<p class="struct">I am… / You are… / Am I…?</p>
+<p class="vocab">Name, age, feelings</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-1.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-1-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-beginner" id="card-2" data-track="2" data-level="beginner">
+<div class="card-top"><span class="num">02</span><button class="done-btn" type="button" data-track="2" aria-pressed="false" aria-label="Mark track 2 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">To be — He, She, It</h3>
+<p class="struct">He/She/It is… / Is he…?</p>
+<p class="vocab">Describing people, animals, things</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-2.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-2-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-beginner" id="card-3" data-track="3" data-level="beginner">
+<div class="card-top"><span class="num">03</span><button class="done-btn" type="button" data-track="3" aria-pressed="false" aria-label="Mark track 3 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Have got</h3>
+<p class="struct">I have got… / He has got… / Have you got…?</p>
+<p class="vocab">Family, pets, belongings</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-3.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-3-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-beginner" id="card-4" data-track="4" data-level="beginner">
+<div class="card-top"><span class="num">04</span><button class="done-btn" type="button" data-track="4" aria-pressed="false" aria-label="Mark track 4 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Present Simple — like / want / need</h3>
+<p class="struct">I like… / I don't like… / Do you like…?</p>
+<p class="vocab">Food, hobbies, school subjects</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-4.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-4-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-beginner" id="card-5" data-track="5" data-level="beginner">
+<div class="card-top"><span class="num">05</span><button class="done-btn" type="button" data-track="5" aria-pressed="false" aria-label="Mark track 5 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Present Simple — actions</h3>
+<p class="struct">I play / watch / eat… / He plays…</p>
+<p class="vocab">Daily actions</p>
+<span class="wc">~18 words</span>
+<div class="actions"><a class="btn lesson" href="track-5.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-5-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-beginner" id="card-6" data-track="6" data-level="beginner">
+<div class="card-top"><span class="num">06</span><button class="done-btn" type="button" data-track="6" aria-pressed="false" aria-label="Mark track 6 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">There is / There are</h3>
+<p class="struct">There is a… / There are… / Is there…?</p>
+<p class="vocab">Home, room, furniture</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-6.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-6-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><a class="checkpoint lv-beginner" data-level="beginner" href="review-1.html"><span class="cp-ico" aria-hidden="true">🔁</span><span class="cp-title">Review Unit 1 — after Track 6</span><span class="cp-go">Open review →</span></a></div>
+</details>
+<details class="zone lv-elementary" data-level="elementary" open>
+<summary><span class="zone-ico" aria-hidden="true">⭐</span><span class="zone-title"><strong>Elementary</strong><small>Tracks 7–15 · earn the Explorer badge</small></span><span class="zone-prog"><span class="zone-count" data-zone-count="elementary">0/9</span><span class="mini"><i data-zone-bar="elementary"></i></span></span></summary>
+<div class="grid"><article class="card lv-elementary" id="card-7" data-track="7" data-level="elementary">
+<div class="card-top"><span class="num">07</span><button class="done-btn" type="button" data-track="7" aria-pressed="false" aria-label="Mark track 7 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Can — ability</h3>
+<p class="struct">I can… / I can't… / Can you…?</p>
+<p class="vocab">Skills, sports, abilities</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-7.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-7-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-elementary" id="card-8" data-track="8" data-level="elementary">
+<div class="card-top"><span class="num">08</span><button class="done-btn" type="button" data-track="8" aria-pressed="false" aria-label="Mark track 8 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Present Continuous</h3>
+<p class="struct">I am playing… / What are you doing?</p>
+<p class="vocab">Actions happening now</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-8.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-8-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-elementary" id="card-9" data-track="9" data-level="elementary">
+<div class="card-top"><span class="num">09</span><button class="done-btn" type="button" data-track="9" aria-pressed="false" aria-label="Mark track 9 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Possessive adjectives</h3>
+<p class="struct">my, your, his, her, its / This is my…</p>
+<p class="vocab">Personal things, family</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-9.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-9-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-elementary" id="card-10" data-track="10" data-level="elementary">
+<div class="card-top"><span class="num">10</span><button class="done-btn" type="button" data-track="10" aria-pressed="false" aria-label="Mark track 10 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Demonstratives</h3>
+<p class="struct">This/That is… / These/Those are…</p>
+<p class="vocab">Objects around, clothes</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-10.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-10-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-elementary" id="card-11" data-track="11" data-level="elementary">
+<div class="card-top"><span class="num">11</span><button class="done-btn" type="button" data-track="11" aria-pressed="false" aria-label="Mark track 11 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Countable / Uncountable</h3>
+<p class="struct">a/an, some, any / How many…? / How much…?</p>
+<p class="vocab">Food and drinks</p>
+<span class="wc">~18 words</span>
+<div class="actions"><a class="btn lesson" href="track-11.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-11-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-elementary" id="card-12" data-track="12" data-level="elementary">
+<div class="card-top"><span class="num">12</span><button class="done-btn" type="button" data-track="12" aria-pressed="false" aria-label="Mark track 12 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Prepositions of place</h3>
+<p class="struct">in, on, under, next to, between / Where is…?</p>
+<p class="vocab">Locations, room, park</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-12.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-12-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><a class="checkpoint lv-elementary" data-level="elementary" href="review-2.html"><span class="cp-ico" aria-hidden="true">🔁</span><span class="cp-title">Review Unit 2 — after Track 12</span><span class="cp-go">Open review →</span></a><article class="card lv-elementary" id="card-13" data-track="13" data-level="elementary">
+<div class="card-top"><span class="num">13</span><button class="done-btn" type="button" data-track="13" aria-pressed="false" aria-label="Mark track 13 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Past Simple — was / were</h3>
+<p class="struct">I was… / We were… / Were you…?</p>
+<p class="vocab">Yesterday, feelings in the past</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-13.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-13-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-elementary" id="card-14" data-track="14" data-level="elementary">
+<div class="card-top"><span class="num">14</span><button class="done-btn" type="button" data-track="14" aria-pressed="false" aria-label="Mark track 14 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Past Simple — regular verbs</h3>
+<p class="struct">I played… / I didn't play… / Did you play…?</p>
+<p class="vocab">Past actions</p>
+<span class="wc">~18 words</span>
+<div class="actions"><a class="btn lesson" href="track-14.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-14-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-elementary" id="card-15" data-track="15" data-level="elementary">
+<div class="card-top"><span class="num">15</span><button class="done-btn" type="button" data-track="15" aria-pressed="false" aria-label="Mark track 15 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Past Simple — irregular verbs 1</h3>
+<p class="struct">went, saw, ate, came, had</p>
+<p class="vocab">Weekends, holidays</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-15.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-15-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><a class="checkpoint lv-elementary" data-level="elementary" href="review-3.html"><span class="cp-ico" aria-hidden="true">🔁</span><span class="cp-title">Review Unit 3 — after Track 15</span><span class="cp-go">Open review →</span></a></div>
+</details>
+<details class="zone lv-preint" data-level="preint" open>
+<summary><span class="zone-ico" aria-hidden="true">🚀</span><span class="zone-title"><strong>Pre-Intermediate</strong><small>Tracks 16–24 · earn the Navigator badge</small></span><span class="zone-prog"><span class="zone-count" data-zone-count="preint">0/9</span><span class="mini"><i data-zone-bar="preint"></i></span></span></summary>
+<div class="grid"><article class="card lv-preint" id="card-16" data-track="16" data-level="preint">
+<div class="card-top"><span class="num">16</span><button class="done-btn" type="button" data-track="16" aria-pressed="false" aria-label="Mark track 16 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Past Simple — irregular verbs 2</h3>
+<p class="struct">made, said, got, took, gave</p>
+<p class="vocab">Events, stories, gifts</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-16.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-16-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-preint" id="card-17" data-track="17" data-level="preint">
+<div class="card-top"><span class="num">17</span><button class="done-btn" type="button" data-track="17" aria-pressed="false" aria-label="Mark track 17 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Future Simple — will</h3>
+<p class="struct">I will… / I won't… / Will you…?</p>
+<p class="vocab">Plans, dreams, predictions</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-17.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-17-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-preint" id="card-18" data-track="18" data-level="preint">
+<div class="card-top"><span class="num">18</span><button class="done-btn" type="button" data-track="18" aria-pressed="false" aria-label="Mark track 18 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Going to — plans</h3>
+<p class="struct">I'm going to… / What are you going to do?</p>
+<p class="vocab">Weekend and holiday plans</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-18.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-18-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-preint" id="card-19" data-track="19" data-level="preint">
+<div class="card-top"><span class="num">19</span><button class="done-btn" type="button" data-track="19" aria-pressed="false" aria-label="Mark track 19 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Comparative adjectives</h3>
+<p class="struct">bigger than… / more interesting than…</p>
+<p class="vocab">Comparisons, animals, objects</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-19.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-19-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-preint" id="card-20" data-track="20" data-level="preint">
+<div class="card-top"><span class="num">20</span><button class="done-btn" type="button" data-track="20" aria-pressed="false" aria-label="Mark track 20 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Superlative adjectives</h3>
+<p class="struct">the biggest… / the most interesting…</p>
+<p class="vocab">Records, favorites, tops</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-20.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-20-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><a class="checkpoint lv-preint" data-level="preint" href="review-4.html"><span class="cp-ico" aria-hidden="true">🔁</span><span class="cp-title">Review Unit 4 — after Track 20</span><span class="cp-go">Open review →</span></a><article class="card lv-preint" id="card-21" data-track="21" data-level="preint">
+<div class="card-top"><span class="num">21</span><button class="done-btn" type="button" data-track="21" aria-pressed="false" aria-label="Mark track 21 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Present Perfect — experience</h3>
+<p class="struct">I have been… / Have you ever…?</p>
+<p class="vocab">Experience, travel</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-21.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-21-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-preint" id="card-22" data-track="22" data-level="preint">
+<div class="card-top"><span class="num">22</span><button class="done-btn" type="button" data-track="22" aria-pressed="false" aria-label="Mark track 22 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Adverbs of frequency</h3>
+<p class="struct">always, usually, sometimes, never / How often…?</p>
+<p class="vocab">Routines, habits</p>
+<span class="wc">~12 words</span>
+<div class="actions"><a class="btn lesson" href="track-22.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-22-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-preint" id="card-23" data-track="23" data-level="preint">
+<div class="card-top"><span class="num">23</span><button class="done-btn" type="button" data-track="23" aria-pressed="false" aria-label="Mark track 23 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Modal verbs — must, should</h3>
+<p class="struct">You must… / You should… / You mustn't…</p>
+<p class="vocab">Rules, advice, health</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-23.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-23-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-preint" id="card-24" data-track="24" data-level="preint">
+<div class="card-top"><span class="num">24</span><button class="done-btn" type="button" data-track="24" aria-pressed="false" aria-label="Mark track 24 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Wh-questions</h3>
+<p class="struct">What / Where / When / Why / How…</p>
+<p class="vocab">Interviews, dialogues, stories</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-24.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-24-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><a class="checkpoint lv-preint" data-level="preint" href="review-5.html"><span class="cp-ico" aria-hidden="true">🔁</span><span class="cp-title">Review Unit 5 — after Track 24</span><span class="cp-go">Open review →</span></a></div>
+</details>
+<details class="zone lv-inter" data-level="inter" open>
+<summary><span class="zone-ico" aria-hidden="true">🏆</span><span class="zone-title"><strong>Intermediate</strong><small>Tracks 25–30 · earn the Storyteller badge</small></span><span class="zone-prog"><span class="zone-count" data-zone-count="inter">0/6</span><span class="mini"><i data-zone-bar="inter"></i></span></span></summary>
+<div class="grid"><article class="card lv-inter" id="card-25" data-track="25" data-level="inter">
+<div class="card-top"><span class="num">25</span><button class="done-btn" type="button" data-track="25" aria-pressed="false" aria-label="Mark track 25 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Past Continuous</h3>
+<p class="struct">I was playing… / While I was… / What were you doing?</p>
+<p class="vocab">Past actions in progress</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-25.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-25-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-inter" id="card-26" data-track="26" data-level="inter">
+<div class="card-top"><span class="num">26</span><button class="done-btn" type="button" data-track="26" aria-pressed="false" aria-label="Mark track 26 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Present Perfect vs Past Simple</h3>
+<p class="struct">I have done vs I did / just, already, yet</p>
+<p class="vocab">Recent events, results</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-26.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-26-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-inter" id="card-27" data-track="27" data-level="inter">
+<div class="card-top"><span class="num">27</span><button class="done-btn" type="button" data-track="27" aria-pressed="false" aria-label="Mark track 27 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Conditionals — Type 1</h3>
+<p class="struct">If I…, I will… (real conditions)</p>
+<p class="vocab">Plans, conditions, weather</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-27.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-27-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-inter" id="card-28" data-track="28" data-level="inter">
+<div class="card-top"><span class="num">28</span><button class="done-btn" type="button" data-track="28" aria-pressed="false" aria-label="Mark track 28 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Passive Voice — simple tenses</h3>
+<p class="struct">It is made… / It was built…</p>
+<p class="vocab">Inventions, buildings, facts</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-28.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-28-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-inter" id="card-29" data-track="29" data-level="inter">
+<div class="card-top"><span class="num">29</span><button class="done-btn" type="button" data-track="29" aria-pressed="false" aria-label="Mark track 29 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Reported Speech — simple cases</h3>
+<p class="struct">He said that… / She told me that…</p>
+<p class="vocab">Dialogues, news, messages</p>
+<span class="wc">~15 words</span>
+<div class="actions"><a class="btn lesson" href="track-29.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-29-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><article class="card lv-inter" id="card-30" data-track="30" data-level="inter">
+<div class="card-top"><span class="num">30</span><button class="done-btn" type="button" data-track="30" aria-pressed="false" aria-label="Mark track 30 as done"><span aria-hidden="true">✓</span></button></div>
+<h3 class="topic">Integration Project</h3>
+<p class="struct">All tenses in a real story</p>
+<p class="vocab">Final project: "My English Story"</p>
+<span class="wc">~20 words</span>
+<div class="actions"><a class="btn lesson" href="track-30.html" title="Lesson">📘 Lesson</a><a class="btn tasks" href="track-30-tasks.html" title="Tasks">✍️ Tasks</a></div>
+</article><a class="checkpoint lv-inter" data-level="inter" href="review-6.html"><span class="cp-ico" aria-hidden="true">🔁</span><span class="cp-title">Review Unit 6 — Final review</span><span class="cp-go">Open review →</span></a></div>
+</details>
+
+ </div>
+ <div class="view-table table-wrap">
+  <table>
+   <thead><tr><th style="width:26%">Track</th><th style="width:12%">Level</th><th style="width:20%">Grammar Focus</th><th style="width:22%">Key Structures</th><th style="width:20%">Vocabulary &amp; Words</th></tr></thead>
+   <tbody>
+<tr class="lv-beginner" id="row-1" data-track="1" data-level="beginner">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="1" aria-pressed="false" aria-label="Mark track 1 as done"><span aria-hidden="true">✓</span></button><span class="num">01</span><div class="t-links"><a class="btn lesson sm" href="track-1.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-1-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Beginner</span></td>
+<td class="grammar-topic">To be — I, You</td>
+<td class="key-structures">I am… / You are… / Am I…?</td>
+<td class="vocabulary">Name, age, feelings<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-beginner" id="row-2" data-track="2" data-level="beginner">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="2" aria-pressed="false" aria-label="Mark track 2 as done"><span aria-hidden="true">✓</span></button><span class="num">02</span><div class="t-links"><a class="btn lesson sm" href="track-2.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-2-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Beginner</span></td>
+<td class="grammar-topic">To be — He, She, It</td>
+<td class="key-structures">He/She/It is… / Is he…?</td>
+<td class="vocabulary">Describing people, animals, things<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-beginner" id="row-3" data-track="3" data-level="beginner">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="3" aria-pressed="false" aria-label="Mark track 3 as done"><span aria-hidden="true">✓</span></button><span class="num">03</span><div class="t-links"><a class="btn lesson sm" href="track-3.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-3-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Beginner</span></td>
+<td class="grammar-topic">Have got</td>
+<td class="key-structures">I have got… / He has got… / Have you got…?</td>
+<td class="vocabulary">Family, pets, belongings<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-beginner" id="row-4" data-track="4" data-level="beginner">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="4" aria-pressed="false" aria-label="Mark track 4 as done"><span aria-hidden="true">✓</span></button><span class="num">04</span><div class="t-links"><a class="btn lesson sm" href="track-4.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-4-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Beginner</span></td>
+<td class="grammar-topic">Present Simple — like / want / need</td>
+<td class="key-structures">I like… / I don't like… / Do you like…?</td>
+<td class="vocabulary">Food, hobbies, school subjects<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-beginner" id="row-5" data-track="5" data-level="beginner">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="5" aria-pressed="false" aria-label="Mark track 5 as done"><span aria-hidden="true">✓</span></button><span class="num">05</span><div class="t-links"><a class="btn lesson sm" href="track-5.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-5-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Beginner</span></td>
+<td class="grammar-topic">Present Simple — actions</td>
+<td class="key-structures">I play / watch / eat… / He plays…</td>
+<td class="vocabulary">Daily actions<span class="wc">~18 words</span></td>
+</tr>
+<tr class="lv-beginner" id="row-6" data-track="6" data-level="beginner">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="6" aria-pressed="false" aria-label="Mark track 6 as done"><span aria-hidden="true">✓</span></button><span class="num">06</span><div class="t-links"><a class="btn lesson sm" href="track-6.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-6-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Beginner</span></td>
+<td class="grammar-topic">There is / There are</td>
+<td class="key-structures">There is a… / There are… / Is there…?</td>
+<td class="vocabulary">Home, room, furniture<span class="wc">~15 words</span></td>
+</tr>
+<tr class="review-row" data-level="beginner"><td colspan="5">🔁 Review Unit 1 — after Track 6 · <a href="review-1.html">open review</a></td></tr>
+<tr class="lv-elementary" id="row-7" data-track="7" data-level="elementary">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="7" aria-pressed="false" aria-label="Mark track 7 as done"><span aria-hidden="true">✓</span></button><span class="num">07</span><div class="t-links"><a class="btn lesson sm" href="track-7.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-7-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Elementary</span></td>
+<td class="grammar-topic">Can — ability</td>
+<td class="key-structures">I can… / I can't… / Can you…?</td>
+<td class="vocabulary">Skills, sports, abilities<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-elementary" id="row-8" data-track="8" data-level="elementary">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="8" aria-pressed="false" aria-label="Mark track 8 as done"><span aria-hidden="true">✓</span></button><span class="num">08</span><div class="t-links"><a class="btn lesson sm" href="track-8.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-8-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Elementary</span></td>
+<td class="grammar-topic">Present Continuous</td>
+<td class="key-structures">I am playing… / What are you doing?</td>
+<td class="vocabulary">Actions happening now<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-elementary" id="row-9" data-track="9" data-level="elementary">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="9" aria-pressed="false" aria-label="Mark track 9 as done"><span aria-hidden="true">✓</span></button><span class="num">09</span><div class="t-links"><a class="btn lesson sm" href="track-9.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-9-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Elementary</span></td>
+<td class="grammar-topic">Possessive adjectives</td>
+<td class="key-structures">my, your, his, her, its / This is my…</td>
+<td class="vocabulary">Personal things, family<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-elementary" id="row-10" data-track="10" data-level="elementary">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="10" aria-pressed="false" aria-label="Mark track 10 as done"><span aria-hidden="true">✓</span></button><span class="num">10</span><div class="t-links"><a class="btn lesson sm" href="track-10.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-10-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Elementary</span></td>
+<td class="grammar-topic">Demonstratives</td>
+<td class="key-structures">This/That is… / These/Those are…</td>
+<td class="vocabulary">Objects around, clothes<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-elementary" id="row-11" data-track="11" data-level="elementary">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="11" aria-pressed="false" aria-label="Mark track 11 as done"><span aria-hidden="true">✓</span></button><span class="num">11</span><div class="t-links"><a class="btn lesson sm" href="track-11.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-11-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Elementary</span></td>
+<td class="grammar-topic">Countable / Uncountable</td>
+<td class="key-structures">a/an, some, any / How many…? / How much…?</td>
+<td class="vocabulary">Food and drinks<span class="wc">~18 words</span></td>
+</tr>
+<tr class="lv-elementary" id="row-12" data-track="12" data-level="elementary">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="12" aria-pressed="false" aria-label="Mark track 12 as done"><span aria-hidden="true">✓</span></button><span class="num">12</span><div class="t-links"><a class="btn lesson sm" href="track-12.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-12-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Elementary</span></td>
+<td class="grammar-topic">Prepositions of place</td>
+<td class="key-structures">in, on, under, next to, between / Where is…?</td>
+<td class="vocabulary">Locations, room, park<span class="wc">~15 words</span></td>
+</tr>
+<tr class="review-row" data-level="elementary"><td colspan="5">🔁 Review Unit 2 — after Track 12 · <a href="review-2.html">open review</a></td></tr>
+<tr class="lv-elementary" id="row-13" data-track="13" data-level="elementary">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="13" aria-pressed="false" aria-label="Mark track 13 as done"><span aria-hidden="true">✓</span></button><span class="num">13</span><div class="t-links"><a class="btn lesson sm" href="track-13.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-13-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Elementary</span></td>
+<td class="grammar-topic">Past Simple — was / were</td>
+<td class="key-structures">I was… / We were… / Were you…?</td>
+<td class="vocabulary">Yesterday, feelings in the past<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-elementary" id="row-14" data-track="14" data-level="elementary">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="14" aria-pressed="false" aria-label="Mark track 14 as done"><span aria-hidden="true">✓</span></button><span class="num">14</span><div class="t-links"><a class="btn lesson sm" href="track-14.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-14-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Elementary</span></td>
+<td class="grammar-topic">Past Simple — regular verbs</td>
+<td class="key-structures">I played… / I didn't play… / Did you play…?</td>
+<td class="vocabulary">Past actions<span class="wc">~18 words</span></td>
+</tr>
+<tr class="lv-elementary" id="row-15" data-track="15" data-level="elementary">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="15" aria-pressed="false" aria-label="Mark track 15 as done"><span aria-hidden="true">✓</span></button><span class="num">15</span><div class="t-links"><a class="btn lesson sm" href="track-15.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-15-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Elementary</span></td>
+<td class="grammar-topic">Past Simple — irregular verbs 1</td>
+<td class="key-structures">went, saw, ate, came, had</td>
+<td class="vocabulary">Weekends, holidays<span class="wc">~15 words</span></td>
+</tr>
+<tr class="review-row" data-level="elementary"><td colspan="5">🔁 Review Unit 3 — after Track 15 · <a href="review-3.html">open review</a></td></tr>
+<tr class="lv-preint" id="row-16" data-track="16" data-level="preint">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="16" aria-pressed="false" aria-label="Mark track 16 as done"><span aria-hidden="true">✓</span></button><span class="num">16</span><div class="t-links"><a class="btn lesson sm" href="track-16.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-16-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Pre-Intermediate</span></td>
+<td class="grammar-topic">Past Simple — irregular verbs 2</td>
+<td class="key-structures">made, said, got, took, gave</td>
+<td class="vocabulary">Events, stories, gifts<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-preint" id="row-17" data-track="17" data-level="preint">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="17" aria-pressed="false" aria-label="Mark track 17 as done"><span aria-hidden="true">✓</span></button><span class="num">17</span><div class="t-links"><a class="btn lesson sm" href="track-17.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-17-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Pre-Intermediate</span></td>
+<td class="grammar-topic">Future Simple — will</td>
+<td class="key-structures">I will… / I won't… / Will you…?</td>
+<td class="vocabulary">Plans, dreams, predictions<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-preint" id="row-18" data-track="18" data-level="preint">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="18" aria-pressed="false" aria-label="Mark track 18 as done"><span aria-hidden="true">✓</span></button><span class="num">18</span><div class="t-links"><a class="btn lesson sm" href="track-18.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-18-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Pre-Intermediate</span></td>
+<td class="grammar-topic">Going to — plans</td>
+<td class="key-structures">I'm going to… / What are you going to do?</td>
+<td class="vocabulary">Weekend and holiday plans<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-preint" id="row-19" data-track="19" data-level="preint">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="19" aria-pressed="false" aria-label="Mark track 19 as done"><span aria-hidden="true">✓</span></button><span class="num">19</span><div class="t-links"><a class="btn lesson sm" href="track-19.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-19-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Pre-Intermediate</span></td>
+<td class="grammar-topic">Comparative adjectives</td>
+<td class="key-structures">bigger than… / more interesting than…</td>
+<td class="vocabulary">Comparisons, animals, objects<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-preint" id="row-20" data-track="20" data-level="preint">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="20" aria-pressed="false" aria-label="Mark track 20 as done"><span aria-hidden="true">✓</span></button><span class="num">20</span><div class="t-links"><a class="btn lesson sm" href="track-20.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-20-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Pre-Intermediate</span></td>
+<td class="grammar-topic">Superlative adjectives</td>
+<td class="key-structures">the biggest… / the most interesting…</td>
+<td class="vocabulary">Records, favorites, tops<span class="wc">~15 words</span></td>
+</tr>
+<tr class="review-row" data-level="preint"><td colspan="5">🔁 Review Unit 4 — after Track 20 · <a href="review-4.html">open review</a></td></tr>
+<tr class="lv-preint" id="row-21" data-track="21" data-level="preint">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="21" aria-pressed="false" aria-label="Mark track 21 as done"><span aria-hidden="true">✓</span></button><span class="num">21</span><div class="t-links"><a class="btn lesson sm" href="track-21.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-21-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Pre-Intermediate</span></td>
+<td class="grammar-topic">Present Perfect — experience</td>
+<td class="key-structures">I have been… / Have you ever…?</td>
+<td class="vocabulary">Experience, travel<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-preint" id="row-22" data-track="22" data-level="preint">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="22" aria-pressed="false" aria-label="Mark track 22 as done"><span aria-hidden="true">✓</span></button><span class="num">22</span><div class="t-links"><a class="btn lesson sm" href="track-22.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-22-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Pre-Intermediate</span></td>
+<td class="grammar-topic">Adverbs of frequency</td>
+<td class="key-structures">always, usually, sometimes, never / How often…?</td>
+<td class="vocabulary">Routines, habits<span class="wc">~12 words</span></td>
+</tr>
+<tr class="lv-preint" id="row-23" data-track="23" data-level="preint">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="23" aria-pressed="false" aria-label="Mark track 23 as done"><span aria-hidden="true">✓</span></button><span class="num">23</span><div class="t-links"><a class="btn lesson sm" href="track-23.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-23-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Pre-Intermediate</span></td>
+<td class="grammar-topic">Modal verbs — must, should</td>
+<td class="key-structures">You must… / You should… / You mustn't…</td>
+<td class="vocabulary">Rules, advice, health<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-preint" id="row-24" data-track="24" data-level="preint">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="24" aria-pressed="false" aria-label="Mark track 24 as done"><span aria-hidden="true">✓</span></button><span class="num">24</span><div class="t-links"><a class="btn lesson sm" href="track-24.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-24-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Pre-Intermediate</span></td>
+<td class="grammar-topic">Wh-questions</td>
+<td class="key-structures">What / Where / When / Why / How…</td>
+<td class="vocabulary">Interviews, dialogues, stories<span class="wc">~15 words</span></td>
+</tr>
+<tr class="review-row" data-level="preint"><td colspan="5">🔁 Review Unit 5 — after Track 24 · <a href="review-5.html">open review</a></td></tr>
+<tr class="lv-inter" id="row-25" data-track="25" data-level="inter">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="25" aria-pressed="false" aria-label="Mark track 25 as done"><span aria-hidden="true">✓</span></button><span class="num">25</span><div class="t-links"><a class="btn lesson sm" href="track-25.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-25-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Intermediate</span></td>
+<td class="grammar-topic">Past Continuous</td>
+<td class="key-structures">I was playing… / While I was… / What were you doing?</td>
+<td class="vocabulary">Past actions in progress<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-inter" id="row-26" data-track="26" data-level="inter">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="26" aria-pressed="false" aria-label="Mark track 26 as done"><span aria-hidden="true">✓</span></button><span class="num">26</span><div class="t-links"><a class="btn lesson sm" href="track-26.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-26-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Intermediate</span></td>
+<td class="grammar-topic">Present Perfect vs Past Simple</td>
+<td class="key-structures">I have done vs I did / just, already, yet</td>
+<td class="vocabulary">Recent events, results<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-inter" id="row-27" data-track="27" data-level="inter">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="27" aria-pressed="false" aria-label="Mark track 27 as done"><span aria-hidden="true">✓</span></button><span class="num">27</span><div class="t-links"><a class="btn lesson sm" href="track-27.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-27-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Intermediate</span></td>
+<td class="grammar-topic">Conditionals — Type 1</td>
+<td class="key-structures">If I…, I will… (real conditions)</td>
+<td class="vocabulary">Plans, conditions, weather<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-inter" id="row-28" data-track="28" data-level="inter">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="28" aria-pressed="false" aria-label="Mark track 28 as done"><span aria-hidden="true">✓</span></button><span class="num">28</span><div class="t-links"><a class="btn lesson sm" href="track-28.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-28-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Intermediate</span></td>
+<td class="grammar-topic">Passive Voice — simple tenses</td>
+<td class="key-structures">It is made… / It was built…</td>
+<td class="vocabulary">Inventions, buildings, facts<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-inter" id="row-29" data-track="29" data-level="inter">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="29" aria-pressed="false" aria-label="Mark track 29 as done"><span aria-hidden="true">✓</span></button><span class="num">29</span><div class="t-links"><a class="btn lesson sm" href="track-29.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-29-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Intermediate</span></td>
+<td class="grammar-topic">Reported Speech — simple cases</td>
+<td class="key-structures">He said that… / She told me that…</td>
+<td class="vocabulary">Dialogues, news, messages<span class="wc">~15 words</span></td>
+</tr>
+<tr class="lv-inter" id="row-30" data-track="30" data-level="inter">
+<td><div class="t-track"><button class="done-btn" type="button" data-track="30" aria-pressed="false" aria-label="Mark track 30 as done"><span aria-hidden="true">✓</span></button><span class="num">30</span><div class="t-links"><a class="btn lesson sm" href="track-30.html" title="Lesson">📘 Lesson</a><a class="btn tasks sm" href="track-30-tasks.html" title="Tasks">✍️ Tasks</a></div></div></td>
+<td><span class="lvl-badge">Intermediate</span></td>
+<td class="grammar-topic">Integration Project</td>
+<td class="key-structures">All tenses in a real story</td>
+<td class="vocabulary">Final project: "My English Story"<span class="wc">~20 words</span></td>
+</tr>
+<tr class="review-row" data-level="inter"><td colspan="5">🔁 Review Unit 6 — Final review · <a href="review-6.html">open review</a></td></tr>
+
+   </tbody>
+  </table>
+ </div>
+</main>
+
+<details class="parents">
+ <summary>👨‍👩‍👧 For parents &amp; teachers — pacing and how to use this page</summary>
+ <div class="callout">
+  <h3>⚠️ Important about pacing</h3>
+  <p>This roadmap is designed for roughly <strong>15–18 months</strong> at a relaxed pace — but it flexes:</p>
+  <ul>
+   <li>A single track can be stretched to <strong>3–4 weeks</strong> if more practice is needed.</li>
+   <li>Take a <strong>"review month"</strong> between levels if the child feels wobbly.</li>
+   <li>Realistically: <strong>1.5–2 years</strong> to finish comfortably — that's fine.</li>
+   <li><strong>Rule #1:</strong> confidence in the current track &gt; speed to the next one.</li>
+  </ul>
+ </div>
+ <div class="callout blue">
+  <h3>📚 How the two pages work together</h3>
+  <p><strong>📘 Lesson page</strong> (blue) — the grammar rule, examples, vocabulary table, and quick practice.</p>
+  <p><strong>✍️ Task page</strong> (orange) — reading, listening, speaking prompts and a short writing task. This is what turns grammar into real language.</p>
+  <p style="margin-top:12px"><strong>Do both in the same week.</strong> Grammar alone doesn't stick — it sticks when the child uses it in a story, a question, or a note.</p>
+ </div>
+ <div class="callout blue">
+  <h3>💾 About saved progress</h3>
+  <p>Ticks are saved in this browser on this device only. They are not shared between devices, and clearing the browser data will erase them.</p>
+ </div>
+</details>
+
+<p class="footer-note">Built for curious kids 10+ · Self-paced · Targets <strong>solid A2 / pre-B1</strong></p>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+ var KEY='efk10-roadmap-done-v1',VKEY='efk10-roadmap-view-v1';
+ var LV=['beginner','elementary','preint','inter'];
+ var INFO={beginner:['🌱','Beginner','Starter'],elementary:['⭐','Elementary','Explorer'],preint:['🚀','Pre-Intermediate','Navigator'],inter:['🏆','Intermediate','Storyteller']};
+ var body=document.body,done={},earned={},tm;
+ try{var r=localStorage.getItem(KEY);if(r){done=JSON.parse(r)||{};}}catch(e){done={};}
+ try{var v=localStorage.getItem(VKEY);if(v==='cards'||v==='table'){body.setAttribute('data-view',v);}}catch(e){}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(done));}catch(e){}}
+ function all(s){return [].slice.call(document.querySelectorAll(s));}
+ var cards=all('.card[data-track]');
+ var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(tm);tm=setTimeout(function(){t.classList.remove('show');},3800);}
+ function nextTrack(){for(var i=0;i<cards.length;i++){if(!done[cards[i].getAttribute('data-track')])return cards[i];}return null;}
+
+ function render(initial){
+  var total=cards.length,count=0;
+  all('.done-btn').forEach(function(b){
+   var n=b.getAttribute('data-track'),on=!!done[n];
+   b.setAttribute('aria-pressed',on?'true':'false');
+   b.setAttribute('aria-label',(on?'Unmark track ':'Mark track ')+n+(on?' (done)':' as done'));
+  });
+  all('.card[data-track],tr[data-track]').forEach(function(el){el.classList.toggle('is-done',!!done[el.getAttribute('data-track')]);});
+  cards.forEach(function(c){if(done[c.getAttribute('data-track')])count++;});
+  document.getElementById('doneCount').textContent=count;
+  document.getElementById('bar').style.width=(total?count/total*100:0)+'%';
+  var bw=document.getElementById('barWrap');bw.setAttribute('aria-valuenow',count);
+  LV.forEach(function(lv){
+   var t=0,d=0;
+   cards.forEach(function(c){if(c.getAttribute('data-level')===lv){t++;if(done[c.getAttribute('data-track')])d++;}});
+   var cnt=document.querySelector('[data-zone-count="'+lv+'"]'),bar=document.querySelector('[data-zone-bar="'+lv+'"]');
+   if(cnt)cnt.textContent=d+'/'+t;
+   if(bar)bar.style.width=(t?d/t*100:0)+'%';
+   var complete=t>0&&d===t;
+   var z=document.querySelector('.zone[data-level="'+lv+'"]');if(z)z.classList.toggle('is-complete',complete);
+   var b=document.querySelector('[data-badge="'+lv+'"]');
+   if(b){b.classList.toggle('earned',complete);}
+   if(complete&&!earned[lv]&&!initial){toast(INFO[lv][0]+' '+INFO[lv][2]+' badge earned — '+INFO[lv][1]+' level complete!');}
+   earned[lv]=complete;
+  });
+  var nx=nextTrack(),cb=document.getElementById('continueBtn'),cl=document.getElementById('curLevel');
+  if(nx){
+   var info=INFO[nx.getAttribute('data-level')],n=parseInt(nx.getAttribute('data-track'),10);
+   cl.textContent=info[0]+' '+info[1];
+   cb.textContent=(count?'▶ Continue with track ':'▶ Start with track ')+n;
+  }else{cl.textContent='🎉 All levels complete';cb.textContent='🎉 All done!';}
+ }
+
+ function setFilter(lv){
+  body.setAttribute('data-filter',lv);
+  all('[data-lv]').forEach(function(c){c.setAttribute('aria-pressed',c.getAttribute('data-lv')===lv?'true':'false');});
+ }
+ function setView(v){
+  body.setAttribute('data-view',v);
+  all('[data-viewbtn]').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-viewbtn')===v?'true':'false');});
+  try{localStorage.setItem(VKEY,v);}catch(e){}
+ }
+
+ document.addEventListener('click',function(e){
+  var t=e.target;if(!t.closest)return;
+  var d=t.closest('.done-btn');
+  if(d){var n=d.getAttribute('data-track');if(done[n]){delete done[n];}else{done[n]=1;}save();render(false);return;}
+  var f=t.closest('[data-lv]');if(f){setFilter(f.getAttribute('data-lv'));return;}
+  var vb=t.closest('[data-viewbtn]');if(vb){setView(vb.getAttribute('data-viewbtn'));return;}
+  if(t.closest('#resetBtn')){if(window.confirm('Reset all progress on this device?')){done={};save();render(true);toast('Progress reset');}return;}
+  if(t.closest('#continueBtn')){
+   var nx=nextTrack();
+   if(!nx){toast('🎉 You finished all '+cards.length+' tracks. Amazing!');return;}
+   setFilter('all');
+   var n2=nx.getAttribute('data-track'),isTable=body.getAttribute('data-view')==='table';
+   var target=document.getElementById((isTable?'row-':'card-')+n2);
+   var zone=target.closest('details');if(zone&&!zone.open){zone.open=true;}
+   target.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
+   target.classList.remove('spot');void target.offsetWidth;target.classList.add('spot');
+   var l=target.querySelector('a.lesson');if(l){try{l.focus({preventScroll:true});}catch(x){l.focus();}}
+  }
+ });
+ window.addEventListener('beforeprint',function(){all('details').forEach(function(d){d.open=true;});});
+
+ setView(body.getAttribute('data-view'));
+ render(true);
+})();
+</script>
+</body>
+</html>

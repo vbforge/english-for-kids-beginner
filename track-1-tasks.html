@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track 1 — Task Pack · English for Kids 10+</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --ink: #1a1d29;
+            --ink-soft: #4a4f5e;
+            --muted: #7a8093;
+            --line: #e8eaf0;
+            --bg-1: #f7f8fc;
+            --bg-2: #eef0f8;
+            --primary: #5b6ee1;
+            --primary-dark: #3d4fbf;
+            --primary-bg: #eef1ff;
+            --accent: #ff7a59;
+            --accent-dark: #d9552f;
+            --accent-bg: #fff3ee;
+            --accent-line: #ffd6c2;
+            --ok: #2e9d63;
+            --ok-bg: #e7f7ee;
+        }
+
+        body {
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-1);
+            color: var(--ink);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            padding: 40px 20px 80px;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        /* ---------- TOP NAV ---------- */
+        .topnav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 100px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            border-color: var(--accent);
+            color: var(--accent-dark);
+            transform: translateX(-2px);
+        }
+
+        .lesson-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: linear-gradient(135deg, var(--primary) 0%, #7b8bef 100%);
+            border-radius: 100px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            box-shadow: 0 6px 16px rgba(91, 110, 225, 0.28);
+            transition: all 0.2s ease;
+        }
+
+        .lesson-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(91, 110, 225, 0.36);
+        }
+
+        /* ---------- HEADER ---------- */
+        .track-header {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .chip {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .chip-level { background: var(--accent-bg); color: var(--accent-dark); }
+        .chip-time  { background: var(--primary-bg); color: var(--primary-dark); }
+
+        .track-header h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 4.5vw, 2.9rem);
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .track-header h1 em {
+            font-style: italic;
+            color: var(--accent-dark);
+        }
+
+        .track-header .lead {
+            font-size: 1.05rem;
+            color: var(--ink-soft);
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        /* ---------- INTRO STRIP ---------- */
+        .intro-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .intro-item {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 16px 18px;
+            font-size: 0.88rem;
+            color: var(--ink-soft);
+        }
+
+        .intro-item strong {
+            display: block;
+            color: var(--accent-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        /* ---------- TASK SECTIONS ---------- */
+        .task {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .task-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .task-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: var(--accent-bg);
+            border-radius: 12px;
+            font-size: 1.35rem;
+        }
+
+        .task-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 700;
+            font-size: 1.35rem;
+            color: var(--ink);
+            line-height: 1.2;
+        }
+
+        .task-title small {
+            display: block;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-top: 3px;
+        }
+
+        .task p {
+            color: var(--ink-soft);
+            font-size: 0.96rem;
+            margin-bottom: 12px;
+        }
+
+        .task p.instruction {
+            padding: 12px 16px;
+            background: var(--accent-bg);
+            border-radius: 10px;
+            border-left: 3px solid var(--accent);
+            font-size: 0.92rem;
+            color: var(--accent-dark);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        /* ---------- READING BOX ---------- */
+        .reading-box {
+            background: #fbfcff;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin: 12px 0;
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--ink);
+        }
+
+        .reading-box strong {
+            color: var(--primary-dark);
+            background: var(--primary-bg);
+            padding: 1px 6px;
+            border-radius: 5px;
+        }
+
+        .reading-box .ru {
+            display: block;
+            color: var(--muted);
+            font-style: italic;
+            font-size: 0.86rem;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--line);
+        }
+
+        .reading-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+
+        /* ---------- QUESTIONS ---------- */
+        .qlist {
+            list-style: none;
+            counter-reset: q;
+            margin: 8px 0;
+        }
+
+        .qlist li {
+            counter-increment: q;
+            padding: 11px 0 11px 40px;
+            position: relative;
+            color: var(--ink-soft);
+            font-size: 0.96rem;
+            border-bottom: 1px solid #f2f4f9;
+        }
+
+        .qlist li:last-child { border-bottom: none; }
+
+        .qlist li::before {
+            content: counter(q);
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 26px;
+            height: 26px;
+            background: var(--accent-bg);
+            color: var(--accent-dark);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .qlist li em {
+            color: var(--muted);
+            font-style: italic;
+            font-size: 0.88rem;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .blank-line {
+            display: inline-block;
+            min-width: 140px;
+            border-bottom: 1.5px solid var(--accent-line);
+            margin: 0 6px;
+        }
+
+        /* ---------- LISTENING SCRIPT ---------- */
+        .script-toggle {
+            margin-top: 14px;
+        }
+
+        .script-toggle summary {
+            cursor: pointer;
+            padding: 10px 16px;
+            background: var(--primary-bg);
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: var(--primary-dark);
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .script-toggle summary::-webkit-details-marker { display: none; }
+        .script-toggle summary::before {
+            content: "👁";
+        }
+
+        .script-toggle[open] summary::before {
+            content: "▼";
+        }
+
+        .script-toggle summary:hover {
+            background: #dde2ff;
+        }
+
+        .script-content {
+            margin-top: 12px;
+            padding: 18px 22px;
+            background: #fbfcff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--ink);
+        }
+
+        .script-content strong { color: var(--primary-dark); }
+
+        /* ---------- SPEAKING CARDS ---------- */
+        .speaking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 12px 0;
+        }
+
+        .speaking-card {
+            background: var(--accent-bg);
+            border: 1px solid var(--accent-line);
+            border-radius: 14px;
+            padding: 16px 18px;
+        }
+
+        .speaking-card .label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-bottom: 6px;
+        }
+
+        .speaking-card .prompt {
+            font-size: 0.98rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+
+        .speaking-card .hint {
+            font-size: 0.86rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        /* ---------- WRITING ---------- */
+        .writing-lines {
+            margin: 14px 0;
+        }
+
+        .writing-line {
+            height: 32px;
+            border-bottom: 1.5px dashed var(--line);
+            margin-bottom: 8px;
+        }
+
+        .word-bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0;
+        }
+
+        .word-bank span {
+            display: inline-block;
+            padding: 5px 12px;
+            background: var(--primary-bg);
+            color: var(--primary-dark);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* ---------- ANSWER KEY ---------- */
+        .answer-key {
+            margin-top: 22px;
+            padding: 20px 24px;
+            background: var(--ok-bg);
+            border: 1px solid #cdecd9;
+            border-radius: 16px;
+        }
+
+        .answer-key summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--ok);
+            font-size: 0.95rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .answer-key summary::-webkit-details-marker { display: none; }
+
+        .answer-key summary::before {
+            content: "🔒";
+        }
+
+        .answer-key[open] summary::before {
+            content: "🔓";
+        }
+
+        .answer-key .key-body {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid #cdecd9;
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+            line-height: 1.8;
+        }
+
+        .answer-key .key-body strong {
+            color: var(--ok);
+        }
+
+        /* ---------- TEACHER NOTE ---------- */
+        .teacher-note {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6ecff 100%);
+            border: 1px solid #d6e0ff;
+            border-radius: 20px;
+            padding: 24px 28px;
+            margin-bottom: 22px;
+        }
+
+        .teacher-note h3 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+
+        .teacher-note ul {
+            margin-left: 20px;
+            color: var(--ink-soft);
+            font-size: 0.94rem;
+        }
+
+        .teacher-note li {
+            margin: 6px 0;
+        }
+
+        .teacher-note strong { color: var(--primary-dark); }
+
+        /* ---------- BOTTOM NAV ---------- */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn.prev {
+            background: white;
+            border: 1px solid var(--line);
+            color: var(--ink-soft);
+        }
+
+        .nav-btn.prev:hover {
+            border-color: var(--accent);
+            color: var(--accent-dark);
+        }
+
+        .nav-btn.next {
+            background: linear-gradient(135deg, var(--accent) 0%, #ff9576 100%);
+            color: white;
+            margin-left: auto;
+            box-shadow: 0 6px 18px rgba(255, 122, 89, 0.32);
+        }
+
+        .nav-btn.next:hover {
+            transform: translateX(4px);
+            box-shadow: 0 10px 24px rgba(255, 122, 89, 0.42);
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .task, .teacher-note { box-shadow: none; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- TOP NAV -->
+        <nav class="topnav">
+            <a href="track-1.html" class="back-link">← Back to Lesson</a>
+            <a href="index.html" class="lesson-link">🗺️ Roadmap</a>
+        </nav>
+
+        <!-- HEADER -->
+        <header class="track-header">
+            <div class="meta-row">
+                <span class="chip chip-level">Task Pack · Track 01</span>
+                <span class="chip chip-time">Use after the lesson</span>
+            </div>
+            <h1>Practice Pack — <em>I am, You are</em></h1>
+            <p class="lead">Grammar becomes real when the child uses it. These four short tasks take about 20–30 minutes total and turn "I am / You are" into language the child can actually speak and write.</p>
+        </header>
+
+        <!-- INTRO STRIP -->
+        <div class="intro-strip">
+            <div class="intro-item">
+                <strong>📖 Reading</strong>
+                Short text with "I am / You are" — 5 minutes.
+            </div>
+            <div class="intro-item">
+                <strong>🎧 Listening</strong>
+                Parent reads aloud, child listens — 5 minutes.
+            </div>
+            <div class="intro-item">
+                <strong>🗣️ Speaking</strong>
+                3 real-life prompts — 10 minutes.
+            </div>
+            <div class="intro-item">
+                <strong>✍️ Writing</strong>
+                A tiny "About me" note — 5 minutes.
+            </div>
+        </div>
+
+        <!-- ============ TASK 1: READING ============ -->
+        <section class="task">
+            <div class="task-header">
+                <span class="task-icon">📖</span>
+                <div class="task-title">
+                    Task 1 · Reading
+                    <small>5 minutes</small>
+                </div>
+            </div>
+
+            <p class="instruction">Read the text. Then answer the questions below.</p>
+
+            <div class="reading-box">
+                <div class="reading-title">Hi! This is me.</div>
+                <p>Hi! <strong>I'm</strong> Mia. <strong>I'm</strong> ten years old. <strong>I'm</strong> a pupil. <strong>I'm</strong> happy today. My friend is Tom. <strong>He's</strong> ten too. <strong>You're</strong> my friend, too — nice to meet you!</p>
+                <span class="ru">Привіт! Я Міа. Мені десять років. Я учениця. Я щаслива сьогодні. Мій друг — Том. Йому теж десять. Ти мій друг також — приємно познайомитись!</span>
+            </div>
+
+            <ol class="qlist">
+                <li>What is the girl's name? <em>Як звати дівчинку?</em><br><span class="blank-line"></span></li>
+                <li>How old is she? <em>Скільки їй років?</em><br><span class="blank-line"></span></li>
+                <li>Is she a pupil? <em>Вона учениця?</em><br><span class="blank-line"></span></li>
+                <li>How does she feel today? <em>Як вона почувається сьогодні?</em><br><span class="blank-line"></span></li>
+                <li>Is Tom ten too? <em>Тому теж десять?</em><br><span class="blank-line"></span></li>
+            </ol>
+
+            <details class="answer-key">
+                <summary>Answer key</summary>
+                <div class="key-body">
+                    <strong>1.</strong> She's Mia. &nbsp; <strong>2.</strong> She's ten. &nbsp; <strong>3.</strong> Yes, she is. &nbsp; <strong>4.</strong> She's happy. &nbsp; <strong>5.</strong> Yes, he is.
+                </div>
+            </details>
+        </section>
+
+        <!-- ============ TASK 2: LISTENING ============ -->
+        <section class="task">
+            <div class="task-header">
+                <span class="task-icon">🎧</span>
+                <div class="task-title">
+                    Task 2 · Listening
+                    <small>5 minutes</small>
+                </div>
+            </div>
+
+            <p class="instruction">Parent reads the dialogue aloud twice. Child listens and fills in the missing words.</p>
+
+            <div class="reading-box">
+                <div class="reading-title">Dialogue: At the door</div>
+                <p><strong>Anna:</strong> Hi! <span class="blank-line"></span> Anna. <span class="blank-line"></span> you Ben?</p>
+                <p><strong>Ben:</strong> Yes, <span class="blank-line"></span> Ben. Nice to meet you!</p>
+                <p><strong>Anna:</strong> Nice to meet you too. <span class="blank-line"></span> you OK?</p>
+                <p><strong>Ben:</strong> Yes, <span class="blank-line"></span> fine. And you?</p>
+                <p><strong>Anna:</strong> <span class="blank-line"></span> happy today!</p>
+            </div>
+
+            <details class="script-toggle">
+                <summary>Show full script (for the parent)</summary>
+                <div class="script-content">
+                    <strong>Anna:</strong> Hi! I'm Anna. Are you Ben?<br>
+                    <strong>Ben:</strong> Yes, I'm Ben. Nice to meet you!<br>
+                    <strong>Anna:</strong> Nice to meet you too. Are you OK?<br>
+                    <strong>Ben:</strong> Yes, I'm fine. And you?<br>
+                    <strong>Anna:</strong> I'm happy today!
+                </div>
+            </details>
+
+            <details class="answer-key">
+                <summary>Answer key</summary>
+                <div class="key-body">
+                    <strong>1.</strong> I'm &nbsp; <strong>2.</strong> Are &nbsp; <strong>3.</strong> I'm &nbsp; <strong>4.</strong> Are &nbsp; <strong>5.</strong> I'm &nbsp; <strong>6.</strong> I'm
+                </div>
+            </details>
+        </section>
+
+        <!-- ============ TASK 3: SPEAKING ============ -->
+        <section class="task">
+            <div class="task-header">
+                <span class="task-icon">🗣️</span>
+                <div class="task-title">
+                    Task 3 · Speaking
+                    <small>10 minutes</small>
+                </div>
+            </div>
+
+            <p class="instruction">Do these out loud together. The child answers in full sentences. No writing yet — just talking.</p>
+
+            <div class="speaking-grid">
+                <div class="speaking-card">
+                    <div class="label">Prompt 1</div>
+                    <div class="prompt">Introduce yourself.</div>
+                    <div class="hint">"I'm ___. I'm ___ years old. I'm a ___."</div>
+                </div>
+
+                <div class="speaking-card">
+                    <div class="label">Prompt 2</div>
+                    <div class="prompt">How are you today?</div>
+                    <div class="hint">"I'm happy / fine / tired / OK."</div>
+                </div>
+
+                <div class="speaking-card">
+                    <div class="label">Prompt 3</div>
+                    <div class="prompt">Ask a friend.</div>
+                    <div class="hint">"Are you OK? Are you happy? Are you ten?"</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 16px; font-size: 0.9rem; color: var(--muted);">
+                💡 <strong>Tip for the parent:</strong> Answer back in full sentences too. Model the language. If the child says "I'm fine" instead of "I'm fine, thank you", don't correct — just repeat it naturally and move on.
+            </p>
+        </section>
+
+        <!-- ============ TASK 4: WRITING ============ -->
+        <section class="task">
+            <div class="task-header">
+                <span class="task-icon">✍️</span>
+                <div class="task-title">
+                    Task 4 · Writing
+                    <small>5 minutes</small>
+                </div>
+            </div>
+
+            <p class="instruction">Write 3 short sentences about yourself. Use the word bank if you need help.</p>
+
+            <div class="word-bank">
+                <span>I'm</span>
+                <span>happy</span>
+                <span>fine</span>
+                <span>tired</span>
+                <span>OK</span>
+                <span>ten</span>
+                <span>a pupil</span>
+                <span>years old</span>
+            </div>
+
+            <div class="writing-lines">
+                <div class="writing-line"></div>
+                <div class="writing-line"></div>
+                <div class="writing-line"></div>
+            </div>
+
+            <p style="font-size: 0.9rem; color: var(--muted); margin-top: 10px;">
+                <strong>Example:</strong> I'm Alex. I'm ten years old. I'm happy.
+            </p>
+        </section>
+
+        <!-- TEACHER NOTE -->
+        <div class="teacher-note">
+            <h3>📌 Note for the parent</h3>
+            <ul>
+                <li>Spread these tasks across the week — <strong>one per day</strong> works well.</li>
+                <li><strong>Do not correct every mistake.</strong> Focus on one thing at a time (e.g., "I'm" vs "Are you").</li>
+                <li>Reading and Listening are receptive — the child can just <strong>listen and enjoy</strong>.</li>
+                <li>Speaking and Writing are productive — this is where the grammar actually sticks.</li>
+                <li>If the child struggles with Task 3 or 4 — <strong>go back to the lesson</strong>, review the rule, and try again the next day.</li>
+            </ul>
+        </div>
+
+        <!-- BOTTOM NAV -->
+        <nav class="bottom-nav">
+            <a href="track-1.html" class="nav-btn prev">← Back to Lesson</a>
+            <a href="track-2.html" class="nav-btn next">Track 2: To be (He, She, It) →</a>
+        </nav>
+    </div>
+</body>
+</html>
